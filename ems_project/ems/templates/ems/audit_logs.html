@@ -1,1 +1,0 @@
-{% extends 'ems/base.html' %}{% block content %}<div class="page-head"><h1>Audit Logs</h1></div><section class="panel"><table><tr><th>Time</th><th>Actor</th><th>Action</th><th>Details</th></tr>{% for l in logs %}<tr><td>{{ l.createdAt|date:'d M Y H:i:s' }}</td><td>{{ l.actor }}</td><td>{{ l.action }}</td><td>{{ l.details }}</td></tr>{% endfor %}</table></section>{% endblock %}

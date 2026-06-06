@@ -1,5 +1,0 @@
-{% extends 'ems/base.html' %}{% block title %}Notifications{% endblock %}{% block content %}
-<div class="page-head"><h1>Notifications</h1><p>Important system and workflow updates.</p></div>
-<form method="post">{% csrf_token %}<button class="btn primary">Mark all as read</button></form>
-<div class="grid">{% for n in notifications %}<div class="card"><div class="badge">{{ n.status|title }}</div><h3>{{ n.title }}</h3><p>{{ n.message }}</p><small>{{ n.createdAt|date:'d M Y h:i A' }}</small></div>{% empty %}<div class="card">No notifications.</div>{% endfor %}</div>
-{% endblock %}

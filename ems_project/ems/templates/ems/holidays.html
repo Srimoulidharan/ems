@@ -1,5 +1,0 @@
-{% extends 'ems/base.html' %}{% block title %}Holidays{% endblock %}{% block content %}
-<div class="page-head"><h1>Holiday Calendar</h1><p>Company holiday and optional holiday management.</p></div>
-<form class="card form-grid" method="post">{% csrf_token %}<label>Name<input name="name" required></label><label>Date<input type="date" name="date" required></label><label>Location<input name="location" value="India"></label><label class="check"><input type="checkbox" name="is_optional"> Optional holiday</label><button class="btn primary">Save Holiday</button></form>
-<div class="card"><table><tr><th>Date</th><th>Name</th><th>Location</th><th>Type</th></tr>{% for h in holidays %}<tr><td>{{ h.date }}</td><td>{{ h.name }}</td><td>{{ h.location }}</td><td>{% if h.is_optional %}Optional{% else %}Mandatory{% endif %}</td></tr>{% endfor %}</table></div>
-{% endblock %}

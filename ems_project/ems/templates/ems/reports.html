@@ -1,5 +1,0 @@
-{% extends 'ems/base.html' %}{% block title %}Reports{% endblock %}{% block content %}
-<div class="page-head"><h1>Reports & CSV Export</h1><p>Export employee, attendance, leave and payroll data based on your role access.</p></div>
-<form class="card filters" method="get"><select name="type"><option value="employees" {% if report_type == 'employees' %}selected{% endif %}>Employees</option><option value="attendance" {% if report_type == 'attendance' %}selected{% endif %}>Attendance</option><option value="leave" {% if report_type == 'leave' %}selected{% endif %}>Leave</option><option value="payroll" {% if report_type == 'payroll' %}selected{% endif %}>Payroll</option></select><button class="btn">View</button><button class="btn primary" name="export" value="csv">Export CSV</button></form>
-<div class="card"><table><tr>{% for h in headers %}<th>{{ h }}</th>{% endfor %}</tr>{% for row in data %}<tr>{% for col in row %}<td>{{ col }}</td>{% endfor %}</tr>{% empty %}<tr><td>No report data.</td></tr>{% endfor %}</table></div>
-{% endblock %}
