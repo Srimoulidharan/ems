@@ -1,0 +1,55 @@
+{% extends 'ems/base.html' %}{% block content %}
+<div class="page-head">
+    <h1>My Attendance</h1>
+</div>
+<section class="cards">
+    <div class="card">
+        <span>Today</span>
+        <b>{{ record.status|default:'Not Checked In' }}</b>
+    </div>
+    <div class="card">
+        <span>Check In</span>
+        <b>{{ record.checkIn|default:'-' }}</b>
+    </div>
+    <div class="card">
+        <span>Check Out</span>
+        <b>{{ record.checkOut|default:'-' }}</b>
+    </div>
+</section>
+<section class="panel">
+    <form method="post" class="inline-form">
+        {% csrf_token %}
+        <select name="work_mode">
+            <option>Office</option>
+            <option>Remote</option>
+            <option>Hybrid</option>
+        </select>
+        <input name="notes" placeholder="Notes">
+        <button name="action" value="checkin" class="btn primary">Check In</button>
+        <button name="action" value="checkout" class="btn">Check Out</button>
+    </form>
+</section>
+<section class="panel">
+    <h2>Recent Attendance</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Status</th>
+            <th>Mode</th>
+            <th>Notes</th>
+        </tr>
+        {% for r in records %}
+        <tr>
+            <td>{{ r.date }}</td>
+            <td>{{ r.checkIn|default:'-' }}</td>
+            <td>{{ r.checkOut|default:'-' }}</td>
+            <td>{{ r.status }}</td>
+            <td>{{ r.work_mode }}</td>
+            <td>{{ r.notes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}
